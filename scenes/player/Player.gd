@@ -1,16 +1,18 @@
 extends KinematicBody2D
+class_name Player
 
 var weapon_scene = preload("res://scenes/weapon/Weapon.tscn")
+var weapon_with_range_scene = preload("res://scenes/weapon-with-range/WeaponWithRange.tscn")
 
 var speed = 200
 var equipped_weapons
 
 func _ready():
 	Global.player = self
-	Global.root_node = get_parent() # TODO: improve
 	equipped_weapons  = Node2D.new()
 	add_child(equipped_weapons)
 	add_weapon(weapon_scene.instance())
+	add_weapon(weapon_with_range_scene.instance())
 
 
 func _physics_process(delta):
