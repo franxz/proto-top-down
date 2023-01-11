@@ -18,12 +18,12 @@ func _ready():
 func _physics_process(delta):
   var player = Global.player
   var desired_velocity = (player.position - position).normalized() * max_speed
-  var steering_force = (desired_velocity - linear_velocity).clamped(max_force)
+  var steering_force = (desired_velocity - linear_velocity).limit_length(max_force)
   applied_force = steering_force
 
 
 func _integrate_forces(state):
-  state.linear_velocity = state.linear_velocity.clamped(max_speed)
+  state.linear_velocity = state.linear_velocity.limit_length(max_speed)
   
 
 func take_damage(impulse: Vector2) -> void:

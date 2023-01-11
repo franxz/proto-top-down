@@ -4,7 +4,7 @@ class_name Player
 var weapon_scene = preload("res://scenes/weapon/Weapon.tscn")
 var weapon_with_range_scene = preload("res://scenes/weapon-with-range/WeaponWithRange.tscn")
 
-var speed = 200
+var speed = 300
 var equipped_weapons
 
 var debug_can_shoot := true

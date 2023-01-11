@@ -1,5 +1,8 @@
 extends Area2D
 
+# Could be improved to:
+# - add get_closest_enemy_moving_towards_player()
+
 var enemies := []
 
 func _ready():
