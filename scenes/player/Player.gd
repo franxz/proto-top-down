@@ -7,10 +7,14 @@ var weapon_with_range_scene = preload("res://scenes/weapon-with-range/WeaponWith
 var speed = 200
 var equipped_weapons
 
+var debug_can_shoot := true
+
 func _ready():
 	Global.player = self
 	equipped_weapons  = Node2D.new()
 	add_child(equipped_weapons)
+	if !debug_can_shoot:
+		return
 	add_weapon(weapon_scene.instance())
 	add_weapon(weapon_with_range_scene.instance())
 

@@ -33,5 +33,5 @@ func take_damage(impulse: Vector2) -> void:
 	  queue_free()
 
 
-func debug_hightlight() -> void:
+func debug_highlight() -> void:
   sprite_node.modulate = Color.yellow
