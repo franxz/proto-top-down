@@ -1,7 +1,9 @@
 extends Node2D
 
 var shot_scene := preload("res://scenes/shot/Shot.tscn")
+var weapon_base_script := preload("res://scripts/WeaponBase.gd")
 
+var weapon_base = weapon_base_script.new()
 var shot_interval := 0.75
 var shot_count := 5
 var dist_from_center := 48
@@ -22,14 +24,5 @@ func _process(delta):
 func _on_timer_timeout():
 	var angle_diff := 2 * PI / shot_count
 	for i in range(shot_count):
-		_create_shot_from_angle(start_angle + angle_diff * i)
-
-
-func _create_shot_from_angle(angle: float) -> void:
-	var dir : Vector2 = Global.Vector2_from_angle(angle)
-	_create_shot(global_position + dir * dist_from_center, angle)
-
-func _create_shot(position: Vector2, angle: float) -> void:
-		var shot := shot_scene.instance()
-		shot.init(position, angle)
-		Global.root_node.add_child(shot)
+		var angle = start_angle + angle_diff * i
+		weapon_base.create_shot(shot_scene, weapon_base.get_shot_origin(global_position, angle, dist_from_center), angle)
