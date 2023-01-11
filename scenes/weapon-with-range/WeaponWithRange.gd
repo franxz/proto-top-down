@@ -13,17 +13,11 @@ var dist_from_center := 48
 onready var attack_range := get_node("AttackRange")
 
 func _ready():
-	var timer := Timer.new()
-	timer.wait_time = cooldown
-	timer.connect("timeout", self, "_on_timer_timeout")
-	add_child(timer)
-	timer.start()
+	Global.set_interval(self, "_shoot", cooldown)
 
-
-func _on_timer_timeout():
+func _shoot():
 	var closest_enemy : Node = attack_range.get_closest_enemy()
 	if closest_enemy:
-		closest_enemy.debug_highlight()
 		var dir : Vector2 = (closest_enemy.position - global_position).normalized()
 		var start_angle := dir.angle() - shot_spread / 2
 		var angle_step := shot_spread / (shot_count - 1)

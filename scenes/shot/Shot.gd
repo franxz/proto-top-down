@@ -13,7 +13,7 @@ func init(position_: Vector2, angle_rad: float) -> void:
 
 func _ready():
 	connect("body_entered", self, "_on_Area2D_body_entered")
-	Global.call_after_timeout(self, "_destroy", lifetime)
+	Global.set_timeout(self, "_destroy", lifetime)
 
 
 func _physics_process(delta):

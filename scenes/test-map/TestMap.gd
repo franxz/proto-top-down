@@ -7,15 +7,10 @@ var wave_enemies := 5
 
 func _ready():
 	Global.root_node = self
-	
-	var timer := Timer.new()
-	timer.wait_time = wave_interval
-	timer.connect("timeout", self, "_on_timer_timeout")
-	add_child(timer)
-	timer.start()
+	Global.set_interval(self, "_create_wave", wave_interval)
 
 
-func _on_timer_timeout():
+func _create_wave():
 	for _i in range(wave_enemies):
 		add_child(_gen_enemy_at_view_border())
 
