@@ -3,6 +3,7 @@ extends Node2D
 var shot_scene := preload("res://scenes/shot/Shot.tscn")
 
 var weapon_base = WeaponBase.new() 
+var shot_color = Color.fuchsia
 var on_cooldown := false
 var cooldown := 2.5 # Time between shot spreads in seconds
 var shot_interval := 0.04 # Time between shots in seconds

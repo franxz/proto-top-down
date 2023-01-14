@@ -16,5 +16,5 @@ func get_shot_origin(angle: float, dist_from_center := 0) -> Vector2:
 
 func create_shot(angle: float, position: Vector2) -> void:
 	var shot := shot_scene.instance()
-	shot.init(position, angle)
+	shot.init(position, angle, weapon_node.shot_color)
 	Global.root_node.add_child(shot)

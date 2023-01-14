@@ -3,6 +3,7 @@ extends Node2D
 var shot_scene := preload("res://scenes/shot/Shot.tscn")
 
 var weapon_base = WeaponBase.new()
+var shot_color = Color.aqua
 var cooldown := 0.5
 var shot_count := 5
 var dist_from_center := 48
