@@ -2,10 +2,9 @@ extends RigidBody2D
 
 onready var sprite_node : Sprite = get_node("Sprite")
 
-var max_force := 800
-var max_speed := 400
 var max_health := 3
 var current_health := max_health
+var steer_agent = SteeringBehaviorsAgent.new()
 
 func init(position_: Vector2) -> void:
   position = position_
@@ -13,17 +12,15 @@ func init(position_: Vector2) -> void:
 
 func _ready():
   add_to_group('enemies')
+  steer_agent.init(self, 800, 400, Global.player)
 
 
 func _physics_process(delta):
-  var player = Global.player
-  var desired_velocity = (player.position - position).normalized() * max_speed
-  var steering_force = (desired_velocity - linear_velocity).limit_length(max_force)
-  applied_force = steering_force
+  steer_agent.physics_process(delta)
 
 
 func _integrate_forces(state):
-  state.linear_velocity = state.linear_velocity.limit_length(max_speed)
+  steer_agent.integrate_forces(state)
   
 
 func take_damage(impulse: Vector2) -> void:

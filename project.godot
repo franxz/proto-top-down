@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://scenes/player/Player.gd"
+}, {
+"base": "Reference",
+"class": "SteeringBehaviorsAgent",
+"language": "GDScript",
+"path": "res://scripts/SteeringBehaviorsAgent.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Player": "",
+"SteeringBehaviorsAgent": ""
 }
 
 [application]
