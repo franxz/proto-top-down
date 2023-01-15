@@ -5,6 +5,8 @@ extends Area2D
 
 var enemies := []
 
+signal enemy_entered
+
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
@@ -12,6 +14,7 @@ func _ready():
 
 func _on_body_entered(body: Node):
 	if body.is_in_group("enemies"):
+		emit_signal("enemy_entered", body)
 		enemies.append(body)
 
 

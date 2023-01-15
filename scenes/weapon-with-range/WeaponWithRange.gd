@@ -14,11 +14,11 @@ var dist_from_center := 48
 onready var attack_range := get_node("AttackRange")
 
 func _ready():
-	attack_range.connect("body_entered", self, "_on_enemy_in_range")
+	attack_range.connect("enemy_entered", self, "_on_enemy_entered")
 	weapon_base.init(self, shot_scene)
 
 
-func _on_enemy_in_range(enemy: Node) -> void:
+func _on_enemy_entered(enemy: Node) -> void:
 	if !on_cooldown:
 		_shoot(enemy)
 		_reset_cooldown()
