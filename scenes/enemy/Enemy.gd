@@ -13,7 +13,7 @@ func init(position_: Vector2) -> void:
 
 func _ready():
   add_to_group('enemies')
-  steer_agent.init(self, 800, 400, Global.player)
+  steer_agent.init(self, 800, 500, Global.player)
 
 
 func _physics_process(delta):

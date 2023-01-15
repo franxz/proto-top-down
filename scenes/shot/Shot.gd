@@ -1,7 +1,7 @@
 extends Area2D
 
 var dir := Vector2()
-var speed := 400
+var speed := 700
 var lifetime := 5
 var dmg_impulse := 1000
 var destroyed = false

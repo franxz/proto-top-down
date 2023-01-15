@@ -7,10 +7,7 @@ extends Area2D
 var dmg_impulse := 35
 var max_hp := 25
 var current_hp := max_hp
-
-onready var sprite_container_node := get_node("SpriteContainer")
-onready var alpha_step : float = sprite_container_node.modulate.a / max_hp
-onready var red_step : float = (1 - sprite_container_node.modulate.r) / max_hp
+var color := Color.whitesmoke
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
@@ -26,7 +23,11 @@ func _on_body_entered(body: Node):
 
 func _take_damage() -> void:
 	current_hp -= 1
-	sprite_container_node.modulate.a -= alpha_step
-	sprite_container_node.modulate.r += red_step
+	color = lerp(Color.red, Color.whitesmoke, 1.0 * current_hp / max_hp)
+	update()
 	if !current_hp:
 		queue_free()
+
+
+func _draw():
+	draw_circle(Vector2.ZERO, 86, color)

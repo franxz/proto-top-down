@@ -4,10 +4,10 @@ class_name Player
 var weapon_scene = preload("res://scenes/weapon/Weapon.tscn")
 var weapon_with_range_scene = preload("res://scenes/weapon-with-range/WeaponWithRange.tscn")
 
-var speed = 300
+var speed = 400
 var equipped_weapons
 
-var debug_can_shoot := true
+export var debug_can_shoot := true
 
 func _ready():
 	Global.player = self
