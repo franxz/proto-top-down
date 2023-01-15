@@ -8,9 +8,13 @@ var dmg_impulse := 35
 var max_hp := 25
 var current_hp := max_hp
 var color := Color.whitesmoke
+var radius := 90
+
+onready var shape_node = get_node("CollisionShape2D")
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	shape_node.shape.radius = radius
 
 
 func _on_body_entered(body: Node):
@@ -30,4 +34,4 @@ func _take_damage() -> void:
 
 
 func _draw():
-	draw_circle(Vector2.ZERO, 86, color)
+	draw_circle(Vector2.ZERO, radius, color)
